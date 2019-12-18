@@ -16,3 +16,4 @@ dist/
 *.eggs*
 
 .vscode/
+image-saver/*images
