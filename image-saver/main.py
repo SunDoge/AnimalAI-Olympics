@@ -9,6 +9,7 @@ from PIL import Image
 from pathlib import Path
 import os
 import imageio
+from tqdm import tqdm
 
 env_path = '../env/AnimalAI'
 worker_id = random.randint(0, 200)
@@ -38,7 +39,8 @@ def init_environment(env_path, no_graphics, worker_id, seed, docker_target_name=
                     .replace('.exe', '')
                     .replace('.x86_64', '')
                     .replace('.x86', ''))
-    docker_training = docker_target_name is not None
+    # docker_training = docker_target_name is not None
+    docker_training=False
 
     return UnityEnvironment(
         n_arenas=1,
@@ -59,12 +61,12 @@ def main(args: Args):
     env = init_environment(env_path, no_graphics, worker_id, run_seed)
     env.reset(arenas_configurations=arena_config_in)
 
-    num_arenas = 10
-    num_images_per_arena = 10
+    num_arenas = 1000
+    num_images_per_arena = 100
 
-    for arena_id in range(num_arenas):
+    for arena_id in tqdm(range(num_arenas)):
         env.reset(arenas_configurations=arena_config_in)
-        for image_id in range(num_images_per_arena):
+        for image_id in tqdm(range(num_images_per_arena)):
             res = env.step(vector_action=np.random.randint(0, 3, size=2 * 1))
 
             # visual_observation: List[ndarray[NUM_ARENAS, 84, 84, 3]]
