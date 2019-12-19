@@ -96,7 +96,7 @@ We offer two packages for this competition:
 
     In case you wish to create a conda environment you can do so by running the below command from the `animalai` folder:
     ```
-    conda env create -f conda_isntall.yaml
+    conda env create -f conda_install.yaml
     ```
 
 - We also provide a package that can be used as a starting point for training, and which is required to run most of the 

@@ -17,4 +17,6 @@ dist/
 
 .vscode/
 image-saver/*images
+*.deb
 *.jpg
+*.gz
