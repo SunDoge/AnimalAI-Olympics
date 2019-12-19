@@ -61,17 +61,18 @@ def main(args: Args):
     env = init_environment(env_path, no_graphics, worker_id, run_seed)
     env.reset(arenas_configurations=arena_config_in)
 
-    num_arenas = 1000
-    num_images_per_arena = 100
+    num_arenas = 10
+    num_images_per_arena = 10
 
     for arena_id in tqdm(range(num_arenas)):
         env.reset(arenas_configurations=arena_config_in)
         for image_id in tqdm(range(num_images_per_arena)):
-            res = env.step(vector_action=np.random.randint(0, 3, size=2 * 1))
+            # res = env.step(vector_action=np.random.randint(0, 3, size=2 * 1))
+            res = env.step(vector_action=[0, 1])
 
             # visual_observation: List[ndarray[NUM_ARENAS, 84, 84, 3]]
             np_image = res['Learner'].visual_observations[0][0]
-            import ipdb; ipdb.set_trace()
+            # import ipdb; ipdb.set_trace()
 
 
             np_image = (np_image * 255).astype(np.uint8)
