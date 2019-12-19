@@ -69,7 +69,8 @@ def main(args: Args):
 
             # visual_observation: List[ndarray[NUM_ARENAS, 84, 84, 3]]
             np_image = res['Learner'].visual_observations[0][0]
-            # import ipdb; ipdb.set_trace()
+            import ipdb; ipdb.set_trace()
+
 
             np_image = (np_image * 255).astype(np.uint8)
             imageio.imsave(
